@@ -1,5 +1,5 @@
-class UsersController < ApplicationController
-has_secure_password
+class User < ActiveRecord::Base
+   has_secure_password
 
-has_many: weights
-end 
+   has_many :weights
+end
