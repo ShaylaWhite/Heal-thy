@@ -22,8 +22,21 @@ class UsersController < ApplicationController
        erb :signup
     end
 
+    #persits user here with name,email,pw
+    get '/users' do
+        if params[:name] !==
+
+            @user = User.create{params}
+
+            redirect "users/#{@user.id}"
+            erb :'/users/show'
+        else
+         
+    end 
+end 
+    
     get '/users/:id' do
-        "show route"
+        erb :'/users/show'
     end 
 
     helpers do
