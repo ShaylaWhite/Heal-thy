@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     end
         
     get '/signup' do
-        "please sign up"
+       erb :signup
     end
 
     get '/users/:id' do
