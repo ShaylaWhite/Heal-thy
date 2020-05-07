@@ -13,7 +13,7 @@ class UsersController < ApplicationController
             #flash[:success] = "#{@user.email}, Successfully Logged In"
             redirect "users/#{@user.id}" 
         else
-            #flash.now[:danger] = "Incorrect User/Password"
+            #flash.now[:danger] = "Incorrect User/Password. Please login again!"
             redirect '/login'
         end
     end
@@ -23,19 +23,20 @@ class UsersController < ApplicationController
     end
 
     #persits user here with name,email,pw
-    get '/users' do
-        if params[:name] !==
-
-            @user = User.create{params}
-
-            redirect "users/#{@user.id}"
-            erb :'/users/show'
+    post '/signup' do
+        @user = User.new
+        @user.email = params[:email]
+        @user.password = params[:password]
+    
+        if @user.save
+          redirect "/login"
         else
-         
-    end 
-end 
+          erb :signup
+        end
+      end
     
     get '/users/:id' do
+        @user = User.find_by(id:params[:id])
         erb :'/users/show'
     end 
 
