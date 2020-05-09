@@ -23,15 +23,18 @@ class UsersController < ApplicationController
     end
 
     #persits user here with name,email,pw
-    post '/signup' do
+    post '/users' do
         @user = User.new
         @user.email = params[:email]
         @user.password = params[:password]
+        @user.name = params[:name]
     
         if @user.save
-          redirect "/login"
+         #flash.now[:success] = "You are now Signed Up, Please login!
+          redirect '/login'
         else
-          erb :signup
+             #flash.now[:danger] = "Sorry Something Went Wrong Sign Up Again"
+            erb :signup
         end
       end
     
@@ -39,6 +42,12 @@ class UsersController < ApplicationController
         @user = User.find_by(id:params[:id])
         erb :'/users/show'
     end 
+
+    get '/logout' do
+        session.clear
+        redirect '/'
+    end
+
 
     helpers do
 
@@ -48,7 +57,7 @@ class UsersController < ApplicationController
 
         def current_user
          @current_user ||= User.find_by(id: session[:user_id])
-        end 
+        end
 
     end 
 end 
