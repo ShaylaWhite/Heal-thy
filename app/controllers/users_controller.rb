@@ -18,6 +18,11 @@ class UsersController < ApplicationController
         end
     end
         
+    get '/logout' do
+        session.clear
+        redirect '/'
+     end
+
     get '/signup' do
        erb :signup
     end
@@ -43,10 +48,7 @@ class UsersController < ApplicationController
         erb :'/users/show'
     end 
 
-    get '/logout' do
-        session.clear
-        redirect '/'
-    end
+ 
 
 
     helpers do
@@ -57,7 +59,7 @@ class UsersController < ApplicationController
 
         def current_user
          @current_user ||= User.find_by(id: session[:user_id])
-        end
+        end 
 
     end 
 end 
