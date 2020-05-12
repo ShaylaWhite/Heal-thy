@@ -11,7 +11,8 @@ class UsersController < ApplicationController
         if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id
             #flash[:success] = "#{@user.email}, Successfully Logged In"
-            redirect "users/#{@user.id}" 
+
+            redirect to "/users/#{@user.id}"
         else
             #flash.now[:danger] = "Incorrect User/Password. Please login again!"
             redirect '/login'
@@ -38,28 +39,19 @@ class UsersController < ApplicationController
          #flash.now[:success] = "You are now Signed Up, Please login!
           redirect '/login'
         else
-             #flash.now[:danger] = "Sorry Something Went Wrong Sign Up Again"
+         #flash.now[:danger] = "Sorry Something Went Wrong Sign Up Again"
             erb :signup
         end
       end
     
     get '/users/:id' do
         @user = User.find_by(id:params[:id])
+        @stat = Stat.find_by(id:params[:id])
+    
         erb :'/users/show'
     end 
 
  
 
 
-    helpers do
-
-        def logged_in?
-        !!current_user
-        end 
-
-        def current_user
-         @current_user ||= User.find_by(id: session[:user_id])
-        end 
-
-    end 
 end 

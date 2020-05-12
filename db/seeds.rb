@@ -4,6 +4,6 @@ shayla = User.create(name:"Shayla" , email:"ShayladWhite1@gmail.com" , password:
 
 shaylaw = User.create(name:"Shaylaw" , email:"ShayladWhite11@gmail.com" , password:"red")
 
-Weight.create(weight:"175" , food_intake:"apples and oranges" , user_id: "shayla")
+Weight.create(weight:"175" , food_intake:"apples and oranges" , user_id: "1")
 
-Weight.create(weight:"175" , food_intake:"apples and oranges" , user_id: "shaylaw")
+Weight.create(weight:"175" , food_intake:"apples and oranges" , user_id: "2")

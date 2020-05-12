@@ -1,0 +1,16 @@
+
+<h2>Hello <%= @user.name %></h2> 
+<h1>Here is Your Weight Log </h1>
+
+
+<p><%= @weight.weight %></p>
+<p><%= @weight.food_intake %></p>
+
+Edit your Weight!
+<a href="/weights/id/<% @weight.id %/edit"> Edit Weight </a>
+
+Delete your Weight!
+<a href="/weights/id/delete"> Delete Weight </a>
+
+
+
